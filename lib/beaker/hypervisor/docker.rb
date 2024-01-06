@@ -548,10 +548,10 @@ module Beaker
       end
 
       # Make sshd directory, set root password
-      dockerfile += <<~DF
-        RUN mkdir -p /var/run/sshd \
-        && echo root:#{root_password} | chpasswd
-      DF
+      #dockerfile += <<~DF
+      #  RUN mkdir -p /var/run/sshd \
+      #  && printf '#{root_password}\n#{root_password}\n' | pw usermod -n root -h0
+      #DF
 
       # Configure sshd service to allowroot login using password
       # Also, disable reverse DNS lookups to prevent every. single. ssh
