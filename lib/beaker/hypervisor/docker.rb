@@ -539,6 +539,9 @@ module Beaker
           && sed -ri 's/^#?UsePAM .*/UsePAM no/' /etc/ssh/sshd_config \
           && systemctl enable sshd
         DF
+      when /freebsd/
+        dockerfile += <<~DF
+        DF
       else
         # TODO: add more platform steps here
         raise "platform #{host['platform']} not yet supported on docker"
